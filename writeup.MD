@@ -24,23 +24,30 @@ My pipeline consisted of 9 steps to convert the original image:
   pipeline failed, the color was determined using the pipette from gimp. Final
   values are `224, 137, 40` (RGB). From all values, a `safety = 10` is subtracted
   before applying to the image.
+  
   ![alt text](/readme/02_color_filter.png)
 - Conversion to grayscale to save computational power (one channel instead of three).
+
   ![alt text](/readme/03_grayscale.png)
 - Application of Gaussian smoothing in order for small, unnecessary edges to
   vanish.
+  
   ![alt text](/readme/04_smoothing.png)
 - application of a poly mask to focus on important regions of the image. The
   polygon was defined dynamically based on the image dimensions.
+  
   ![alt text](/readme/05_polygon.png)
 - Canny edge detection to detect large changes in image lightness. These are
   the edges needed for further processing. `low_threshold = 70` and
   `high_threshold = 150` yielded best results.
+  
   ![alt text](/readme/06_canny.png)
 - Hough transform and line identification in hough space. Lines are searched in
   hough space since it's easier to identify similar lines and to aggregate them.
+  
   ![alt text](/readme/07_hough.png)
 - Lane identification (for details, see below).
+
   ![alt text](/readme/08_lanes.png)
 - Final image.
 
